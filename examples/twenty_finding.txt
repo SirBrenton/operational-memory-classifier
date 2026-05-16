@@ -1,0 +1,1 @@
+Twenty has unbounded retry loops in three utility scripts — no max elapsed bound means retries may never terminate
