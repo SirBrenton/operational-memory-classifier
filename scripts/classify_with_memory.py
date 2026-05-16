@@ -40,7 +40,7 @@ def classify(text: str) -> dict:
 
 def run_memory_query(query: str) -> str:
     proc = subprocess.run(
-        [str(QUERY_SCRIPT), query, "--mode", "stage", "--limit", "3"],
+        [str(QUERY_SCRIPT), query, "--mode", "stage", "--limit", "5"],
         text=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.DEVNULL,
