@@ -183,7 +183,7 @@ def main():
         if args.mode == "stage":
             print(render_receipt_stage(path, slug))
         else:
-            print(render_receipt_full(path, slug))
+            print(render_receipt_stage(path, slug))
 
         print()
         rendered += 1
