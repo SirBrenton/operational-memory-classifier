@@ -1,0 +1,1 @@
+429 handler in generateVariant() detected rate limiting but ignored the Retry-After header. Retry delay used local exponential backoff, causing retries inside the provider cooldown window.
