@@ -123,34 +123,6 @@ def clean_empty_none_block(text: str) -> str:
     return text
 
 
-def render_receipt_full(path: Path, slug: str) -> str:
-    md = path.read_text()
-
-    t = title(md, slug)
-    operational_pattern = section(md, "Operational Pattern")
-    failure_shape = section(md, "Failure Shape")
-    why = section(md, "Why It Matters")
-
-    why_clean = clean_empty_none_block(why)
-    why_block = compact(why_clean, 360) if why_clean else ""
-
-    why_section = f"""
-
-Why it matters:
-{why_block}""" if why_block else ""
-
-    return f"""
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-{t}
-━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-
-{compact(operational_pattern, 420)}
-
-Failure shape:
-{compact(failure_shape, 520)}{why_section}
-""".strip()
-
-
 def render_receipt_stage(path: Path, slug: str) -> str:
     md = path.read_text()
 
@@ -158,18 +130,28 @@ def render_receipt_stage(path: Path, slug: str) -> str:
     failure_shape = section(md, "Failure Shape")
     why = clean_empty_none_block(section(md, "Why It Matters"))
 
-    summary_match = re.search(r"Summary:\n\n(.*?)(?=\n\nConstraints|\Z)", failure_shape, flags=re.DOTALL)
+    summary_match = re.search(
+        r"Summary:\n\n(.*?)(?=\n\nConstraints|\Z)",
+        failure_shape,
+        flags=re.DOTALL,
+    )
     summary = summary_match.group(1).strip() if summary_match else failure_shape
 
-    effect = first_sentence(why, fallback="operational consequence not yet classified.")
+    effect = first_sentence(why, fallback="")
     summary_line = first_sentence(summary, fallback="Operational failure pattern surfaced.")
+
+    cleaned_effect = effect.replace("This failure can create:", "").strip()
+    effect_line = (
+        f"\nEffect: {compact(cleaned_effect, 220)}"
+        if cleaned_effect
+        else ""
+    )
 
     return f"""
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 {t}
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-Pattern: {compact(summary_line, 220)}
-Effect: {compact(effect.replace("This failure can create:", "").strip(), 220)}
+Pattern: {compact(summary_line, 220)}{effect_line}
 """.strip()
 
 
