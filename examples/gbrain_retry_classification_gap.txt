@@ -1,0 +1,1 @@
+pitstop-check found multiple GBrain retry paths where 429 responses are treated as retryable without consulting Retry-After, including embedding and model-call paths. Additional findings showed retry loops without max elapsed bounds and retry handling that did not distinguish CAP vs WAIT semantics.

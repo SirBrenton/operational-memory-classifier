@@ -1,0 +1,1 @@
+429 handled without Retry-After in camofox-browser/server.js and lib/reporter.js — retry behavior likely incorrect, retries may fire inside provider cooldown window
