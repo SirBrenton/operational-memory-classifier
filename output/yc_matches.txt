@@ -1,0 +1,21 @@
+Grai	match=0.80	https://www.grai.io
+
+Lamin	match=0.55	https://lamin.ai
+
+Embrace	match=0.50	https://embrace.io
+
+Webiny	match=0.50	https://www.webiny.com
+
+refine	match=0.50	https://refine.dev
+
+Warrant	match=0.46	https://warrant.dev/
+
+Corsair	match=0.46	https://www.corsair.dev
+
+Bun	match=0.44	https://bun.sh
+
+DAGWorks Inc.	match=0.44	https://www.dagworks.io/
+  github: https://github.com/dagworks-inc/burr
+  github: https://github.com/dagworks-inc/hamilton
+
+Vibrant Labs	match=0.44	https://vibrantlabs.com/
