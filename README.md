@@ -81,3 +81,21 @@ This is not just classification.
 It is classification grounded in confirmed operational precedent from systems that already hit the same wall.
 
 Execution failures should become reusable precedent instead of isolated tribal knowledge.
+
+## Live findings — scanned today
+
+| Repo | Findings |
+|------|----------|
+| garrytan/gbrain | 7 |
+| garrytan/gstack | 4 |
+| jo-inc/camofox-browser | 2 |
+| Mintplex-Labs/anything-llm | 1 |
+| twentyhq/twenty | 3 |
+
+Same failure structure. Different codebases. Discovered today.
+
+## GBrain extension
+
+PR open against garrytan/gbrain — adds `receipts/` as a native inferred document type in GBrain's frontmatter inference system.
+
+https://github.com/garrytan/gbrain/pull/973
